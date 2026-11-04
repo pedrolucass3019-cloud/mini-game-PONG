@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-
 import customtkinter as ctk
 import tkinter as tk
 
@@ -157,7 +155,6 @@ def contagem():
 
 contagem()
 janela.mainloop()
-=======
 
 import customtkinter as ctk
 import tkinter as tk
@@ -319,4 +316,4 @@ def contagem():
 
 contagem()
 janela.mainloop()
->>>>>>> 50528da06e53f222ad6436d185393c98383cf582
+
