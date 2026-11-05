@@ -105,6 +105,7 @@ def mover_pau():
 def mover_saco():
 
     global speed_x, speed_y
+    global pontos_1, pontos_2
 
     campo.move(bola, speed_x, speed_y)
 
@@ -113,21 +114,44 @@ def mover_saco():
     pos1 = campo.coords(raquete_1)
     pos2 = campo.coords(raquete_2)
 
-    
+
     if speed_x < 0:
         if posicao[0] <= pos1[2] and posicao[2] >= pos1[0]:
             if posicao[3] >= pos1[1] and posicao[1] <= pos1[3]:
                 speed_x = abs(speed_x)
+
 
     if speed_x > 0:
         if posicao[0] <= pos2[2] and posicao[2] >= pos2[0]:
             if posicao[3] >= pos2[1] and posicao[1] <= pos2[3]:
                 speed_x = -abs(speed_x)
 
-    
     if posicao[1] <= 0 or posicao[3] >= 600:
         speed_y = -speed_y
 
+
+    if posicao[2] < 0:
+        pontos_2 += 1
+        pontos_att()
+
+        campo.coords(bola, 390, 290, 410, 310)
+        speed_x = -5
+        speed_y = 4
+
+
+    if posicao[0] > 800:
+        pontos_1 += 1
+        pontos_att()
+
+        campo.coords(bola, 390, 290, 410, 310)
+        speed_x = 5
+        speed_y = 4
+def pontos_att():
+
+    campo.itemconfig(
+        placar,
+        text=str(pontos_1) + "      " + str(pontos_2)
+    )
 
 janela.bind("<KeyPress>", pressionar)
 janela.bind("<KeyRelease>", soltar)
